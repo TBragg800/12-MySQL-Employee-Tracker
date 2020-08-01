@@ -16,6 +16,8 @@ connection.connect(err => {
     return;
   }
   console.log("connected as id " + connection.threadId);
+  console.log("Welcome to Employee Tracker!");
+  run();
 });
 
 function run() {
@@ -39,9 +41,69 @@ function run() {
     })
     .then(function(answer) {
       switch (answer.action) {
-      case "":
-        
+      case "View all employees":
+        viewEmp();
+        break;
+      
+      case "View all departments":
+        viewDep();
+        break;
+    
+      case "View all roles":
+        viewRole();
+        break;
+
+      case "View employees by manager":
+        viewMan();
+        break;
+
+      case "Add employee":
+        addEmp();
+        break;
+
+      case "Add department":
+        addDep();
+        break;
+
+      case "Add roles":
+        addRole();
+        break;
+
+      case "Update employee role":
+        updateRole();
+        break;
+
+      case "Update employee manager":
+        updateMan();
+        break;
+
+      case "Remove employee":
+        removeEmp();
         break;
       }
     });
+}
+
+function viewEmp() {
+  connection.query("SELECT * FROM employee", function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    run();
+  });
+}
+
+function viewDep() {
+  connection.query("SELECT * FROM department", function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    run();
+  });
+}
+
+function viewRole() {
+  connection.query("SELECT * FROM role", function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    run();
+  });
 }
