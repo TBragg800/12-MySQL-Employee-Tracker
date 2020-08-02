@@ -4,12 +4,12 @@
 [12-MySQL-Employee-Tracker](https://github.com/TBragg800/12-MySQL-Employee-Tracker)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)
-![GitHub repo size](https://img.shields.io/github/repo-size/TBragg800/10-Template-Engine-Employee-Summary?style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/TBragg800/12-MySQL-Employee-Tracker)
 
 ## Walkthrough Video Demonstration: 
-![Walkthrough]()
+![Walkthrough](./assets/12-MySQL-Employee-Tracker.gif)
 * YouTube link to the 
-[walkthrough]()
+[walkthrough](https://youtu.be/6woeY9KnERs)
 
 ## Table of Contents
   [Description](#Description)
@@ -36,7 +36,7 @@
 ## Usage
   After installation, the user should run 'node app.js' in the CLI, then answer the following prompts.
 
-![]()
+![](./assets/12-MySQL-Employee-Tracker1.png)
 
 ## License
   MIT License
@@ -65,9 +65,7 @@ SOFTWARE.
   Fork the project & clone locally. Create an upstream remote and sync your local copy before you branch. Branch for each separate piece of work. Do the work, write good commit messages, and read the CONTRIBUTING file if there is one. Push to your origin repository. Create a new PR in GitHub.
 
 ## Tests
-
-
-![]()
+  There are no test instructions at this time.
 
 ## Questions
   All questions should be submitted to the email listed below. Please consult the GitHub profile or Repo for additional concerns. 
@@ -75,4 +73,4 @@ SOFTWARE.
   Github: [TBragg800](http://github.com/TBragg800)
 
 ## Screenshot of deployed application
-![]()
+![](./assets/12-MySQL-Employee-Tracker2.png)
