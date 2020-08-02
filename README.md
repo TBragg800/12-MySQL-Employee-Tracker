@@ -27,14 +27,15 @@
   [Questions](#Questions)
   
 ## Description
-  to architect and build a solution for managing a company's employees using node, inquirer, and MySQL
+ This project is a Content Management System made available to the users CLI. This application utilizes node.js to inquirer, and MySQL to architect and build a solution for managing a company's employees.
 
 ## Installation
+* Begin by cloning the repo locally.
 * Using the CLI, the user should navigate to the project directory and run 'npm install'.
-* Note: The jest npm is utilized as a devDependency.
+* Use MySQL for database handling.
 
 ## Usage
-  After installation, the user should run 'node app.js' in the CLI, then answer the following prompts.
+  After installation, the user should run 'node employeeTracker.js' in the CLI, then answer the following prompts.
 
 ![](./assets/12-MySQL-Employee-Tracker1.png)
 
