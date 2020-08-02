@@ -118,7 +118,8 @@ function viewMan() {
 
 function addEmp() {
   inquirer
-    .prompt([{
+    .prompt([
+      {
       name: "first_name",
       type: "input",
       message: "Enter the employee's first name.",
@@ -169,8 +170,7 @@ function addEmp() {
         {first_name: answer.first_name,
           last_name: answer.last_name,
           role_id: answer.role_id || 0,
-          manager_id: answer.manager_id || 0,
-        },
+          manager_id: answer.manager_id || 0},
         function(err) {
           if (err) throw err;
           console.log("You have successfully added this employee!");
@@ -193,6 +193,53 @@ function addDep() {
         function(err) {
           if (err) throw err;
           console.log("You have successfully added this department!");
+          run();
+        }
+      );
+  });
+};
+
+function addRole() {
+  inquirer
+    .prompt([
+      {
+      name: "title",
+      type: "input",
+      message: "Please enter the role's title.",
+      validate: function(answer) {
+        if (answer !== "") {
+            return true;
+        }
+        return "The role must contain at least one character.";
+        }
+      },
+      {
+      name: "salary",
+      type: "input",
+      message: "Please enter the role's salary.",
+
+      },
+      {
+      name: "department_id",
+      type: "input",
+      message: "Please enter the department id.",
+      validate: function(answer) {
+        if (isNaN(answer) === false) {
+            return true;
+        }
+        return false;
+      }
+
+      }
+    ])
+    .then(function(answer) {
+      connection.query("INSERT INTO role SET ?",
+        {title: answer.title,
+          salary: answer.salary || 0,
+          department_id: answer.department_id || 0},
+        function(err) {
+          if (err) throw err;
+          console.log("You have successfully added this role!");
           run();
         }
       );
