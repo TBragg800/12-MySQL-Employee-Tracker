@@ -30,13 +30,12 @@ function run() {
         "View all employees",
         "View all departments",
         "View all roles",
-        "View employees by manager",
         "Add employee",
         "Add department",
         "Add roles",
         "Update employee role",
-        "Update employee manager",
-        "Remove employee"
+        "Remove employee",
+        "Exit"
       ]
     })
     .then(function(answer) {
@@ -51,10 +50,6 @@ function run() {
     
       case "View all roles":
         viewRole();
-        break;
-
-      case "View employees by manager":
-        viewMan();
         break;
 
       case "Add employee":
@@ -73,12 +68,12 @@ function run() {
         updateRole();
         break;
 
-      case "Update employee manager":
-        updateMan();
-        break;
-
       case "Remove employee":
         removeEmp();
+        break;
+
+      case "Exit":
+        exit();
         break;
       }
     });
@@ -263,4 +258,46 @@ function removeEmp() {
         run();
       })
     })
+}
+
+updateRole = () => {
+  connection.query("SELECT * FROM employee", function (err, res) {
+    if (err) throw err;
+      inquirer 
+        .prompt([
+          {
+          name: "updateRole",
+          type: "list",
+          message: "Which employee's role do you want to update?",
+          choices: function () {
+            var choiceArray = [];
+            for (var i = 0; i < res.length; i++) {
+              choiceArray.push(res[i].last_name);
+            }
+            return choiceArray;
+          }
+          }
+        ])
+        .then(function(answer) {
+          inquirer
+            .prompt([
+              {
+              name: "changeRole",
+              type: "input",
+              message: "What is the employee's new role id number?"
+              },
+          ])
+          .then(function (roleAnswer) {
+            connection.query("UPDATE employee SET role_id = ? WHERE last_name = ?", [roleAnswer.changeRole, answer.updateRole]);
+            console.log("You have successfully updated the employee's role!");
+            run();
+        })
+
+    });
+  })
+};
+
+function exit() {
+  console.log("Thank you for using Emplyee Tracker!");
+  connection.end();
 }
